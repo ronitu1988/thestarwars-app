@@ -39,10 +39,10 @@
 
 
 .character-card {
-  width: 300px;
-  height: 300px;
+  width: 250px;
+  height: 250px;
   border: 1px solid #ccc;
-  margin: 10px;
+  margin: 5px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -61,7 +61,7 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: center; /* Vertically align elements */
-  margin: 80px; /* Center the container */
+  margin: 40px; /* Center the container */
 }
 
 .pagination {
@@ -88,8 +88,9 @@
 }
 
 .vl {
-  border-left: 6px solid green;
-  height: 200px;
+  border-bottom: 6px solid green;
+  height: 10px;
+  width: 200px;
 }
 
 .charName {
@@ -129,13 +130,13 @@
 .pagination-left {
   top: 45%;
   left: 0;
-  width: 100px;
+  width: 70px;
 }
 
 .pagination-right {
   top: 45%;
   right: 0;
-  width: 100px;
+  width: 70px;
 }
 
 .arrow-icon {

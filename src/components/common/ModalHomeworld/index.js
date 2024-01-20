@@ -12,7 +12,7 @@ const ModalHomeworld = ({
     const customStyles = {
         content: {
             width: '40%', // Set your custom width here
-            height: '60%', // Set your custom height here
+            height: '70%', // Set your custom height here
             top: '50%',
             left: '50%',
             transform: 'translate(-50%, -50%)',

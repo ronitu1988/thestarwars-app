@@ -35,7 +35,7 @@ const Character = ({ data, onSetCharacterDetails, convertCmtoMeter, convertDate 
                     <div className="animate-text">
                         < div className="charName" > {data.name}</div >
                         <div className="vl"></div>
-                        <div style={{ textAlign: 'left', marginLeft: '10px', fontSize: '18px', width: '250px' }}>
+                        <div style={{ textAlign: 'left', marginLeft: '10px', fontSize: '14px' }}>
                             <div>
                                 <p>Height: {convertCmtoMeter(data.height)} meters</p>
                                 <p>DOB: {data.birth_year}</p>

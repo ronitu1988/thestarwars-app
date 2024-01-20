@@ -36,15 +36,16 @@ Both arrow is pagination and it will fetch page api call when use click on it
 
 Landing Page with Stars War People
 
-<img src="media/landing.png.png" width=650>
+<img src="media/landing.png" width=650>
 
 Hover the Stars War card with details
 
-<img src="media/hoverDetails.png.png" width=650>
+<img src="media/hoverDetails.png" width=650>
 
 Modal popup with more details
 
-<img src="media/modalpopup.png.png" width=300>
+<img src="media/modalpopup.png" width=300>
 
 Loading - waiting for API fetch
+
 <img src="media/Loading.png" width=300>

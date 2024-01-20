@@ -42,6 +42,20 @@ const speciesColor = {
     "Pau'an": "#77422a",
 }
 
+const cachingSpecies = {}
+
+const cachingHomeworld = {}
+
+const regex = /\/(\d+)\/$/;
+
+const findLastDigitInURL = (url) => {
+    const match = url.match(regex);
+    if (match) {
+        return match[1];
+    }
+    return 0
+}
+
 export const fetchCharacters = createAsyncThunk(
     'characters/fetchCharacters',
     async (page, thunkAPI) => {
@@ -54,15 +68,24 @@ export const fetchCharacters = createAsyncThunk(
                 for (const data of charactersArr) {
 
                     try {
-                        /* Call api to get species details */
-                        /*
-                            Todo: Can reduce api call since we can parse the URL
-                            https://swapi.dev/api/species/2/
-                            The last digit url can determine species base on predefine color
+                        /* Call api to get species details 
+                            Using hash table to store information already being called
+                            to reduce number of API - Looking like API doesnt have implement
+                            Caching so the response time get is too long
                         */
+
                         if (!!data.species.length) {  /* Call api to get species details */
-                            const resDetails = await axios.get(data.species[0]);
-                            data.color = speciesColor[resDetails.data.name];
+                            const url = data.species[0]
+                            const lastDigit = findLastDigitInURL(url);
+                            if (lastDigit in cachingSpecies) {
+                                data.color = cachingSpecies[lastDigit]
+                            }
+                            else {
+                                const resDetails = await axios.get(url);
+                                data.color = speciesColor[resDetails.data.name];
+                                cachingSpecies[lastDigit] = data.color
+                            }
+
                         }
                     } catch (err) {
                         console.log('ERR - Species: ', err)
@@ -70,8 +93,16 @@ export const fetchCharacters = createAsyncThunk(
 
                     try {
                         if (data.homeworld) {      /* Call api to get homeworl details */
-                            const resHomeworldDetails = await axios.get(data.homeworld);
-                            data.homeworldDetails = resHomeworldDetails.data;
+                            const url = data.homeworld
+                            const lastDigit = findLastDigitInURL(url);
+                            if (lastDigit in cachingHomeworld) {
+                                data.color = cachingHomeworld[lastDigit]
+                            }
+                            else {
+                                const resHomeworldDetails = await axios.get(url);
+                                data.homeworldDetails = resHomeworldDetails.data;
+                                cachingHomeworld[lastDigit] = data.homeworldDetails
+                            }
                         }
                     } catch (err) {
                         console.log('ERR - homeworld: ', err)

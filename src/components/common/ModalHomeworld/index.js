@@ -9,15 +9,15 @@ const ModalHomeworld = ({
     convertCmtoMeter,
     convertDate
 }) => {
-
     const customStyles = {
         content: {
             width: '40%', // Set your custom width here
-            height: '48%', // Set your custom height here
+            height: '60%', // Set your custom height here
             top: '50%',
             left: '50%',
             transform: 'translate(-50%, -50%)',
-            background: currentCharacterDetails?.color || 'white',
+            background: currentCharacterDetails?.color,
+            color: "white"
         },
     };
 

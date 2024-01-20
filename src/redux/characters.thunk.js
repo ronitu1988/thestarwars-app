@@ -73,7 +73,7 @@ export const fetchCharacters = createAsyncThunk(
                             to reduce number of API - Looking like API doesnt have implement
                             Caching so the response time get is too long
                         */
-
+                        data.color = 'black';
                         if (!!data.species.length) {  /* Call api to get species details */
                             const url = data.species[0]
                             const lastDigit = findLastDigitInURL(url);
@@ -92,11 +92,12 @@ export const fetchCharacters = createAsyncThunk(
                     }
 
                     try {
+                        data.homeworldDetails = ''
                         if (data.homeworld) {      /* Call api to get homeworl details */
                             const url = data.homeworld
                             const lastDigit = findLastDigitInURL(url);
                             if (lastDigit in cachingHomeworld) {
-                                data.color = cachingHomeworld[lastDigit]
+                                data.homeworldDetails = cachingHomeworld[lastDigit]
                             }
                             else {
                                 const resHomeworldDetails = await axios.get(url);

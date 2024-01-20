@@ -78,11 +78,11 @@ export const fetchCharacters = createAsyncThunk(
                             const url = data.species[0]
                             const lastDigit = findLastDigitInURL(url);
                             if (lastDigit in cachingSpecies) {
-                                data.color = cachingSpecies[lastDigit]
+                                data.color = cachingSpecies[lastDigit] || "black"
                             }
                             else {
                                 const resDetails = await axios.get(url);
-                                data.color = speciesColor[resDetails.data.name];
+                                data.color = speciesColor[resDetails.data.name] || "black";
                                 cachingSpecies[lastDigit] = data.color
                             }
 
